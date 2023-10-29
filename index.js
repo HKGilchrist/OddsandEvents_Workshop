@@ -20,6 +20,12 @@ const sortAllButton = document.getElementById("sortAll"); // Sort all numbers.
 // Event Listener for "Add Number" button to add input to Number Bank.
 addNumButton.addEventListener("click", (event) => {
   // console.log("I am in the listener", number.value);
+  const parsedInput = parseInt(number.value);
+  // HTML has input set to number, but if that were to change, this keeps it from being included in the number bank.
+  if (isNaN(parsedInput)) {
+    alert(`${number.value} is NaN.`);
+    return;
+  }
   numberBankArr.push(number.value);
   numBankInput.innerHTML = numberBankArr;
   event.preventDefault();
